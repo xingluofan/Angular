@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8" />
+    <title>Document</title>
+</head>
+<body ng-app = "app">
+<div ng-controller = "demo">
+	开启:<input type = 'radio' ng-model = "status" value="1">
+	关闭:<input type = 'radio' ng-model = "status" value="0">
+	<h2>{{status}}</h2>
+</div>
+
+<script src = "js/angular.min.js"></script>
+<script>
+	var app = angular.module( 'app', [] );
+    app.controller( 'demo', [ '$scope', function ( $scope ) {
+        $scope.status = 1;
+        console.log($scope.status)
+    } ] )
+</script>
+</body>
+</html>

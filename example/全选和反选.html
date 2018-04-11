@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <title>Title</title>
+	<script src = "js/angular.js"></script>
+</head>
+<body>
+<div ng-app = "app">
+	<div ng-controller = "demo">
+		<table>
+			<tr>
+				<td>
+					<input type = "checkbox" ng-model = "all">
+					<span ng-bind = "all?'全选':'反选'"></span>
+				</td>
+				<td>姓名</td>
+				<td>年龄</td>
+			</tr>
+			<tr ng-repeat = "k in data">
+				<td><input type = "checkbox" ng-checked="all"></td>
+				<td>{{k.name}}</td>
+				<td>{{k.age}}</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<script>
+	var app = angular.module( 'app', [] );
+    app.controller( 'demo', [ '$scope', function ( $scope ) {
+        $scope.data = [
+            { name: 'YI0', age: 20 },
+            { name: 'YI1', age: 21 },
+            { name: 'YI2', age: 22 }
+        ]
+    } ] )
+</script>
+</body>
+</html>

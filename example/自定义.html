@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+    <script src = "js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app = "app">
+    <ul ng-controller = "SwitchController">
+        <li>{{str|lise}}</li>
+        <li>{{str|know}}</li>
+        <li>{{str|know|lise}}</li>
+    </ul>
+</div>
+<script>
+    var App = angular.module( 'app', [] );
+    App.controller( 'SwitchController', [ '$scope', function ( $scope ) {
+        $scope.str = 'my name is YI';
+    } ] );
+    App.filter( 'lise', function () {
+        return function ( str ) {
+            return str[ 0 ].toUpperCase() + str.slice( 1 )
+        }
+    } );
+    App.filter( 'know', function () {
+        return function ( str ) {
+            return str.slice( 0, str.length - 1 ) + str[ str.length - 1 ].toLowerCase()
+        }
+    } )
+</script>
+</body>
+</html>

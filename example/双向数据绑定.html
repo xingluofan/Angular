@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+    <script src = "js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app = "app">
+    <div ng-controller = "demo">
+        <input type = "text" ng-model="msg">
+        <h1 ng-bind = "msg"></h1>
+        <button ng-click = "show()">点击</button>
+    </div>
+</div>
+<script>
+    var app = angular.module( 'app', [] );
+    app.controller( 'demo', [ '$scope', function ( $scope ) {
+        $scope.msg = '这是一条信息';
+        $scope.show = function () {
+            $scope.msg = '这是点击后的信息'
+        }
+    } ] )
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+    <script src = "js/angular.min.js"></script>
+</head>
+<body ng-app = "app">
+<div ng-controller = "demo">
+    <h2>{{name}}</h2>
+    <h3>{{age}}</h3>
+    <h2 ng-bind="name"></h2>
+    <h3 ng-bind="age"></h3>
+    <h2 ng-clock>{{name}}</h2>
+    <h3 ng-clock>{{age}}</h3>
+    <h2>{{name}}:{{age}}</h2>
+    <h1 ng-bind-template="{{name}}:{{age}}"></h1>
+</div>
+<script>
+    var app = angular.module( 'app', [] );
+    app.controller( 'demo', [ '$scope', function ( $scope ) {
+        $scope.name = 'YI';
+        $scope.age = 20
+    } ] )
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+    <script src = "js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app = "app">
+    <div ng-controller = "SwitchController">
+        <ul>
+            <li ng-repeat="a in items" ng-switch="a.sex">
+                姓名:{{a.name}} 年龄:{{a.age}}
+                性别:<span ng-switch-when='1'>男</span>
+                <span ng-switch-when='2'>女</span>
+                <span ng-switch-when='0'>保密</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    var App = angular.module( 'app', [] );
+    App.controller( 'SwitchController', [ '$scope', function ( $scope ) {
+        $scope.items = [
+            {name:'小明',age:10,sex:1},
+            {name:'小蓝',age:9,sex:2},
+            {name:'小绿',age:11,sex:1},
+            {name:'小花',age:11,sex:0}
+        ]
+    } ] )
+</script>
+</body>
+</html>

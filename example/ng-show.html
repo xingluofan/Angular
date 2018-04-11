@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset = "UTF-8" />
+    <title>Document</title>
+</head>
+<body ng-app = "app">
+<div ng-controller = "demo">
+	游戏:<input type = 'checkbox' ng-model = "data.game" ng-true-value = "1" ng-false-value = "0">
+	电影:<input type = 'checkbox' ng-model = "data.video" ng-true-value = "1" ng-false-value = "0">
+	<!--<h2>{{data.game}}</h2>-->
+	<div ng-show = "data.game==1">
+		游戏
+	</div>
+	<div ng-show = "data.video==1">
+		电影
+	</div>
+</div>
+
+<script src = "js/angular.min.js"></script>
+<script>
+	var app = angular.module( 'app', [] );
+    app.controller( 'demo', [ '$scope', function ( $scope ) {
+        $scope.data = { game: 0, video: 0 };
+
+    } ] )
+</script>
+</body>
+</html>

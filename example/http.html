@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+    <script src = "js/angular.js"></script>
+</head>
+<body>
+<div ng-app = "app">
+    <div ng-controller = "demo">
+        <button ng-click = "send()">点击就送</button>
+    </div>
+</div>
+<script>
+	function fn( data ) {
+        console.log( data )
+    }
+</script>
+
+<script>
+    var app = angular.module( 'app', [] );
+    app.controller( 'demo', [ '$scope', '$http', '$log', function ( $scope, $http, $log ) {
+        $scope.send = function () {
+            $http( {
+                url: 'php/http.php?callback=JSON_CALLBACK',
+                method: 'jsonp'
+            } ).success( function ( data ) {
+                console.log( data );
+            } )
+        }
+    } ] )
+</script>
+</body>
+</html>

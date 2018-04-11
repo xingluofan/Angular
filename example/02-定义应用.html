@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div ng-app="app">
+        <div ng-controller='StudentController'>
+            <h2>{{name}}</h2>
+            <h4>{{age}}</h4>
+            <ul>
+                <li ng-repeat=" ( k , course ) in courses ">第{{ k + 1 }}天 {{course}} </li>
+            </ul>
+        </div>
+    </div>
+    <script src="libs/angular.min.js"></script>
+    <script type="text/javascript">
+
+    var App = angular.module('app' , []);
+
+    /*App.controller( 'StudentController' , [ '$scope' , function( $scope ){
+
+        $scope.name = 'Tom';
+        $scope.age = '3';
+
+    } ] )*/
+
+
+    App.controller( 'StudentController' , [ '$scope' , function ($scope){
+        $scope.name = 'Tom';
+        $scope.age = '3';
+        //$scope就是模型model层,进行数据操作的
+       /* for(var k in courser){
+
+        }
+*/
+        $scope.courses = [
+            'html',
+            'css',
+            'JavaScript'
+        ]
+    }])
+
+    </script>
+</body>
+</html>

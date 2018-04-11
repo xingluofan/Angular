@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+    <script src = "js/angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app = "app">
+    <ul ng-controller = 'FilterController'>
+        <li>{{price|currency}}</li>
+        <li>{{price|currency:'人民币 ￥'}}</li>
+        <li>{{price|currency:'人民币 ￥':4}}</li>
+        <li>{{now|date}}</li>
+        <li>{{now|date:'yyyy年MM月dd日 EEE HH:mm:ss:sss'}}</li>
+        <li>{{item|filter:'s'}}</li>
+        <li>{{students|json}}</li>
+        <li>{{str1|limitTo:3}}</li>
+        <li>{{str1|limitTo:-3}}</li>
+        <li>{{str1|uppercase}}</li>
+        <li>{{str2|lowercase}}</li>
+        <li>{{num|number:0}}</li>
+        <li>{{item|orderBy:''}}</li>
+        <li>{{abc|orderBy:'':true}}</li>
+    </ul>
+</div>
+<script>
+    var App = angular.module( 'app', [] );
+    App.controller( 'SwitchController', [ '$scope', function ( $scope ) {
+        $scope.price = 123456789;
+        $scope.now = new Date;
+        $scope.item = [ 'html', 'css', 'js' ];
+        $scope.students = [
+            { name: '小明', age: 10, sex: 1 },
+            { name: '小蓝', age: 9, sex: 2 },
+            { name: '小绿', age: 11, sex: 1 },
+            { name: '小花', age: 11, sex: 0 }
+        ];
+        $scope.str1 = "abcdefg";
+        $scope.str2 = "ABCDEFG";
+        $scope.num = 1111111.1111111111;
+        $scope.abc = [ 'b', 'c', 'd', '3', 'a', 'f', 'z', '2' ];
+    }])
+</script>
+</body>
+</html>

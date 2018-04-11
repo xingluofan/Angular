@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div ng-app = "app">
+    <div ng-controller = "stutend">
+        <h2>{{name}}</h2>
+        <h3>{{age}}</h3>
+        <ul>
+            <li ng-repeat = "(k,course) in courses">
+                第{{k+1}}天 {{course}}
+            </li>
+        </ul>
+    </div>
+</div>
+<script src = "js/angular.min.js"></script>
+<script>
+    var app = angular.module( 'app', [] );//模块
+    console.log( app );
+    app.controller( 'stutend', [ '$scope', function ( $scope ) { //控制层
+        $scope.name = 'YI';
+        $scope.age = '20';
+        $scope.courses = [ 'html', 'css', 'javascript' ]
+    } ] )
+</script>
+</body>
+</html>

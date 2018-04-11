@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <title>Title</title>
+	<script src = "js/angular.js"></script>
+</head>
+<body>
+<div ng-app = "app" ng-controller = "demo">
+	<lgabel><input type = "checkbox" ng-model = "status">接受协议</lgabel>
+	<button ng-init = "copyright=false" ng-click = "copyright=!copyright">查看协议</button>
+	<br>
+	<button ng-disabled="!status">注册</button><hr>
+	<textarea ng-if = "copyright">协议内容</textarea>
+</div>
+<script>
+	var app = angular.module( 'app', [] );
+    app.controller( 'demo', [ '$scope', function ( $scope ) {
+    
+    } ] )
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+	<meta charset = "UTF-8">
+	<title>Ajax</title>
+	<script src = "js/angular.min.js"></script>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #F7F7F7;
+		}
+		
+		h3 {
+			text-align: center;
+		}
+		
+		.chatbox {
+			width: 500px;
+			height: 500px;
+			margin: 0 auto;
+			border: 1px solid #CCC;
+			background-color: #FFF;
+			border-radius: 5px;
+		}
+		
+		.messages {
+			height: 350px;
+			padding: 20px 40px;
+			box-sizing: border-box;
+			border-bottom: 1px solid #CCC;
+			overflow: scroll;
+		}
+		
+		.messages h5 {
+			font-size: 20px;
+			margin: 10px 0;
+		}
+		
+		.messages p {
+			font-size: 18px;
+			margin: 0;
+		}
+		
+		.self {
+			text-align: left;
+		}
+		
+		.other {
+			text-align: right;
+		}
+		
+		.form {
+			height: 150px;
+		}
+		
+		.form .input {
+			height: 110px;
+			padding: 10px;
+			box-sizing: border-box;
+		}
+		
+		.form .btn {
+			height: 40px;
+			box-sizing: border-box;
+			border-top: 1px solid #CCC;
+		}
+		
+		.form textarea {
+			display: block;
+			width: 100%;
+			height: 100%;
+			box-sizing: border-box;
+			border: none;
+			resize: none;
+			outline: none;
+			font-size: 20px;
+		}
+		
+		.form input {
+			display: block;
+			width: 100px;
+			height: 30px;
+			margin-top: 5px;
+			margin-right: 20px;
+			float: right;
+		}
+	</style>
+</head>
+<body>
+<div ng-app = "app">
+	<h3>简单的Ajax实例</h3>
+	<div class = "chatbox" ng-controller = "demo">
+		<!-- 聊天内容 -->
+		<div class = "messages">
+			<div class = "{{message.cls}}" ng-repeat = "message in messages" ng-model = "con">
+				<h5>{{message.role}}</h5>
+				<p>{{message.text}}</p>
+			</div>
+		</div>
+		<!-- 表单 -->
+		<div class = "form">
+			<!-- 输入框 -->
+			<div class = "input">
+				<textarea ng-model = "msg"></textarea>
+			</div>
+			<!-- 按钮 -->
+			<div class = "btn">
+				<input type = "button" value = "发送" ng-click = "send()">
+			</div>
+		</div>
+	</div>
+</div>
+	<script>
+		//我说: message[] = { text:xxx, role:我, class:self }
+        //他说: message[] = { text:xxx, role:他, class:other }
+        var app = angular.module( 'app', [] );
+        app.controller( 'demo', [ '$scope', '$http', '$log', function ( $scope, $http, $log ) {
+            $scope.messages = [];
+            $scope.send = function () {
+                var message = { text: $scope.msg, role: "我说", cls: "self" };
+                $scope.messages.push( message );
+                $scope.msg = '';
+                $http( {
+                    url: 'php/chat.php',
+                    method: 'get'
+                } ).success( function ( data ) {
+                    message = { text: data, role: "他说", cls: "other" };
+                    $scope.messages.push( message );
+                } )
+            }
+        } ] )
+	</script>
+</body>
+</html>

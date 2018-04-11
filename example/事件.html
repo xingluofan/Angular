@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <title>Title</title>
+    <script src = "js/angular.min.js"></script>
+</head>
+<body>
+<div ng-app="app">
+    <div ng-controller="demo">
+        <ul>
+            <li ng-click="click()">li1</li>
+            <li ng-dblclick="dblclick()">li2</li>
+            <li ng-mouseleave="mouseleave()">li3</li>
+        </ul>
+        <input type = "text" ng-blur="blur()">'
+    </div>
+</div>
+<script>
+    var app = angular.module('app',[]);
+    app.controller('demo',['$scope',function ( $scope ) {
+        $scope.click = function () {
+            console.log('点击事件')
+        };
+        $scope.dblclick = function () {
+            console.log('双击事件')
+        };
+        $scope.mouseleave = function () {
+            console.log('鼠标离开事件')
+        };
+        $scope.blur = function () {
+            console.log('失焦事件')
+        };
+    }])
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <title>Title</title>
+	<script src = "js/angular.min.js"></script>
+</head>
+<body ng-app="app">
+<div>
+	<hello>
+		<br/>
+		<span>原始的内容，</span><br/>
+		<span>还会在这里。</span>
+	</hello>
+</div>
+<script>
+var appModule = angular.module( 'app', [] );
+appModule.directive( 'hello', function () {
+    return {
+        restrict: 'E',
+        template: '<div>Hi there <span ng-transclude></span></div>',//ng-transclude 会把hello标签里的的内容放到这个标签里,
+		//因为没有replace:true所有hello没有被替换掉
+        transclude: true,
+//        replace:true
+    };
+} );
+</script>
+
+</body>
+</html>

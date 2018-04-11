@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <title>Title</title>
+	<script src = "js/angular.js"></script>
+</head>
+<body>
+<div ng-app="app">
+	<div ng-controller="demo">
+	{{date}}
+	</div>
+</div>
+<script>
+	var app = angular.module('app',[]);
+    app.controller('demo',['$scope','$filter',function ( $scope,$filter ) {
+		$scope.date = '123';
+    }])
+</script>
+</body>
+</html>
